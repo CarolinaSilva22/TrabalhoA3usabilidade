@@ -1,0 +1,31 @@
+public class Professor extends Funcionario {
+
+    public Professor() {
+        super();
+    }
+    
+    public Professor(String nome, String sobrenome, int matricula, double salario) {
+        super(nome, sobrenome, matricula, salario); 
+    }
+
+    @Override
+    public double getSalarioPrimeiraParcela() {
+        return getSalario(); 
+    }
+
+    @Override
+    public double getSalarioSegundaParcela() {
+        return 0; 
+    }
+
+    // teste
+    public static void main(String[] args) {
+        Professor professor = new Professor("Julio", "Silva", 235345, 5400.00);
+        
+        System.out.println("Nome: " + professor.getNomeCompleto()); // Saída: Julio Silva
+        System.out.println("Matrícula: " + professor.getMatricula()); // Saída: 235345
+        System.out.println("Salário: " + professor.getSalario()); // Saída: 5400.0
+        System.out.println("Primeira Parcela: " + professor.getSalarioPrimeiraParcela()); // Saída: 5400.0
+        System.out.println("Segunda Parcela: " + professor.getSalarioSegundaParcela()); // Saída: 0.0
+    }
+}

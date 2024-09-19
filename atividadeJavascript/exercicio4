@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cálculo da Média</title>
+    <script>
+        
+        function calcularMedia() {
+            
+            const nota1 = parseFloat(prompt("Digite a primeira nota:"));
+            const nota2 = parseFloat(prompt("Digite a segunda nota:"));
+            const nota3 = parseFloat(prompt("Digite a terceira nota:"));
+
+            if (isNaN(nota1) || isNaN(nota2) || isNaN(nota3)) {
+                alert("Por favor, insira apenas números válidos.");
+                return;
+            }
+
+            const media = (nota1 + nota2 + nota3) / 3;
+
+            alert(`A média aritmética das notas é: ${media.toFixed(2)}`);
+        }
+        window.onload = calcularMedia;
+    </script>
+</head>
+<body>
+    <h1>Cálculo da Média Aritmética</h1>
+    <p>As notas serão solicitadas assim que a página carregar.</p>
+</body>
+</html>

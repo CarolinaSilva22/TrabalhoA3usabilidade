@@ -1,0 +1,11 @@
+
+function calcularSalario(salario) {
+    const aumento = 0.25; // 25%
+    return salario + (salario * aumento);
+}
+
+const salario = parseFloat(prompt("Digite o salário do funcionário:"));
+
+const novoSalario = calcularSalario(salario);
+
+console.log(`Novo salário: R$ ${novoSalario.toFixed(2)}`);

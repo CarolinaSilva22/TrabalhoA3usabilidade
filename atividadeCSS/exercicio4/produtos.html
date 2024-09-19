@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produtos do Supermercado</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<style>
+    body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 20px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+h1 {
+    color: #0c4c52;
+}
+p{
+    color: #03828e;
+}
+
+main {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin: 10px;
+    width: 250px;
+    text-align: center;
+    padding: 15px;
+}
+
+.card img {
+    max-width: 100%;
+    border-radius: 8px;
+}
+
+.card h2 {
+    font-size: 1.5em;
+    color: #333;
+}
+
+.card p {
+    color: #666;
+}
+
+
+</style>
+<body>
+    <header>
+        <h1>Supermercado</h1>
+        <p>Confira nossos produtos!</p>
+    </header>
+    
+    <main>
+        <div class="card">
+            <img src="imagem1.jpg" alt="Produto 1">
+            <h2>Arroz Integral</h2>
+            <p>Arroz integral de alta qualidade, rico em fibras.</p>
+        </div>
+        
+        <div class="card">
+            <img src="imagem2.jpg" alt="Produto 2">
+            <h2>Feijão </h2>
+            <p>Feijão , fonte de proteína e ferro.</p>
+        </div>
+        
+        <div class="card">
+            <img src="imagem3.jpg" alt="Produto 3">
+            <h2>Açúcar </h2>
+            <p>Açúcar natural, ideal para adoçar suas receitas.</p>
+        </div>
+        
+        <div class="card">
+            <img src="imagem4.jpg" alt="Produto 4">
+            <h2>Macarrão Integral</h2>
+            <p>Macarrão integral, saudável e saboroso.</p>
+        </div>
+    </main>
+    
+    
+</body>
+</html>

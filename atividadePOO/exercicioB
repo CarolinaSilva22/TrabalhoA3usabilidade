@@ -1,7 +1,51 @@
- Uma subclasse de Pessoa, chamada Funcionario. A classe Funcionario deve ter os
-atributos matrícula (inteiro) e salário (double), com seus respectivos métodos get e set. O
-salário de um funcionário jamais poderá ser negativo. Todo funcionário recebe seu salário
-em duas parcelas, sendo 60% na primeira parcela e 40% na segunda parcela. Assim,
-escreva os métodos getSalarioPrimeiraParcela que retorna o valor da primeira parcela do
-salário (60%) e getSalarioSegundaParcela que retorna o valor da segunda parcela do
-salário (40%)
+public class Funcionario extends Pessoa {
+    private int matricula;
+    private double salario;
+   
+    public Funcionario() {
+        super(); 
+        this.matricula = 0;
+        this.salario = 0.0;
+    }
+
+    public Funcionario(String nome, String sobrenome, int matricula, double salario) {
+        super(nome, sobrenome); 
+        this.matricula = matricula;
+        setSalario(salario); /
+    }
+
+    public int getMatricula() {
+        return matricula;
+    }
+
+    public void setMatricula(int matricula) {
+        this.matricula = matricula;
+    }
+
+    public double getSalario() {
+        return salario;
+    }
+
+    public void setSalario(double salario) {
+        this.salario = salario;
+    }
+
+    public double getSalarioPrimeiraParcela() {
+        return salario * 0.60;
+    }
+
+    public double getSalarioSegundaParcela() {
+        return salario * 0.40;
+    }
+
+    // teste
+    public static void main(String[] args) {
+        Funcionario funcionario = new Funcionario("Flavia", "Maria", 67890, 3000.00);
+        
+        System.out.println("O Nome: " + funcionario.getNomeCompleto()); // Saída: Flavia Maria
+        System.out.println("A Matrícula: " + funcionario.getMatricula()); // Saída: 67890
+        System.out.println("O Salário: " + funcionario.getSalario()); // Saída: 3000.0
+        System.out.println("A Primeira Parcela: " + funcionario.getSalarioPrimeiraParcela()); // Saída: 1800.0
+        System.out.println("A Segunda Parcela: " + funcionario.getSalarioSegundaParcela()); // Saída: 1200.0
+    }
+}

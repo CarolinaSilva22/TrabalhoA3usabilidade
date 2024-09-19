@@ -1,0 +1,14 @@
+
+function calcularIdade(anoNascimento, anoAtual) {
+    return anoAtual - anoNascimento;
+}
+
+const anoNascimento = parseInt(prompt("Digite o seu ano de nascimento:"));
+const anoAtual = parseInt(prompt("Digite o ano atual:"));
+
+const idadeAtual = calcularIdade(anoNascimento, anoAtual);
+
+const idade2050 = calcularIdade(anoNascimento, 2050);
+
+console.log(`Você tem ${idadeAtual} anos no ano atual.`);
+console.log(`Você terá ${idade2050} anos em 2050.`);

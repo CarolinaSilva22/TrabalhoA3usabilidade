@@ -1,21 +1,39 @@
-def __init__(self, nome="", sobrenome=""):
-        self.nome = nome
-        self.sobrenome = sobrenome
-   
-    def get_nome(self):
-        return self.nome
+public class Pessoa {
+    private String nome;
+    private String sobrenome;
 
-    def set_nome(self, nome):
-        self.nome = nome
+    public Pessoa() {
+        this.nome = "";
+        this.sobrenome = "";
+    }
+ 
+    public Pessoa(String nome, String sobrenome) {
+        this.nome = nome;
+        this.sobrenome = sobrenome;
+    }
 
-    def get_sobrenome(self):
-        return self.sobrenome
+    public String getNome() {
+        return nome;
+    }
 
-    def set_sobrenome(self, sobrenome):
-        self.sobrenome = sobrenome
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
 
-    def get_nome_completo(self):
-        return f"{self.nome} {self.sobrenome}"
+    public String getSobrenome() {
+        return sobrenome;
+    }
 
-pessoaTeste = Pessoa("Carol", "Silva")
-print(pessoaTeste.getNomeCompleto())  # Saída: Carol Silva
+    public void setSobrenome(String sobrenome) {
+        this.sobrenome = sobrenome;
+    }
+
+    public String getNomeCompleto() {
+        return nome + " " + sobrenome;
+    }
+
+ //exemplo
+    public static void main(String[] args) {
+        Pessoa pessoaTeste = new Pessoa("Carol", "Silva");
+        System.out.println(pessoaTeste.getNomeCompleto());"
+

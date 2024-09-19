@@ -1,0 +1,7 @@
+ Uma subclasse de Pessoa, chamada Funcionario. A classe Funcionario deve ter os
+atributos matrícula (inteiro) e salário (double), com seus respectivos métodos get e set. O
+salário de um funcionário jamais poderá ser negativo. Todo funcionário recebe seu salário
+em duas parcelas, sendo 60% na primeira parcela e 40% na segunda parcela. Assim,
+escreva os métodos getSalarioPrimeiraParcela que retorna o valor da primeira parcela do
+salário (60%) e getSalarioSegundaParcela que retorna o valor da segunda parcela do
+salário (40%)

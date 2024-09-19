@@ -1,14 +1,31 @@
 
-function calcularIdade(anoNascimento, anoAtual) {
-    return anoAtual - anoNascimento;
-}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cálculo de Idade</title>
+    <script>
+        function calcularIdade(anoNascimento, anoAtual) {
+            return anoAtual - anoNascimento;
+        }
 
-const anoNascimento = parseInt(prompt("Digite o seu ano de nascimento:"));
-const anoAtual = parseInt(prompt("Digite o ano atual:"));
+        function calcular() {
+            const anoNascimento = parseInt(prompt("Digite o seu ano de nascimento:"));
+            const anoAtual = parseInt(prompt("Digite o ano atual:"));
 
-const idadeAtual = calcularIdade(anoNascimento, anoAtual);
+            const idadeAtual = calcularIdade(anoNascimento, anoAtual);
+            const idade2050 = calcularIdade(anoNascimento, 2050);
 
-const idade2050 = calcularIdade(anoNascimento, 2050);
-
-console.log(`Você tem ${idadeAtual} anos no ano atual.`);
-console.log(`Você terá ${idade2050} anos em 2050.`);
+            document.getElementById("resultadoAtual").textContent = `Você tem ${idadeAtual} anos no ano atual.`;
+            document.getElementById("resultado2050").textContent = `Você terá ${idade2050} anos em 2050.`;
+        }
+    </script>
+</head>
+<body>
+    <h1>Cálculo de Idade</h1>
+    <button onclick="calcular()">Calcular Idade</button>
+    <p id="resultadoAtual"></p>
+    <p id="resultado2050"></p>
+</body>
+</html>

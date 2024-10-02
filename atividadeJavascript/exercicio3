@@ -18,7 +18,7 @@
             let celsius = document.getElementById("celsius").value;
 
             if (!celsius) {
-                alert("Por favor, insira um valor válido para a temperatura em Celsius.");
+                alert("Valores invalidos");
                 return;
             }
 

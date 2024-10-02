@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabela Interativa</title>
+    <style>
+        h1{
+            color: #2c2464;
+            text-align: center;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+            cursor: pointer;
+        }
+        tr:hover {
+            background-color: #ffffff !important;
+            color: #231e49;
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+        tr:nth-child(even) {
+            background-color: #8b9dc3;
+        }
+        tr:nth-child(odd) {
+            background-color: #dfe3ee;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Tabela Interativa</h1>
+<table>
+    <thead>
+        <tr>
+            <th>Coluna 1</th>
+            <th>Coluna 2</th>
+            <th>Coluna 3</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td onclick="mostrarMensagem('Célula 1.1')">Célula 1.1</td>
+            <td onclick="mostrarMensagem('Célula 1.2')">Célula 1.2</td>
+            <td onclick="mostrarMensagem('Célula 1.3')">Célula 1.3</td>
+        </tr>
+        <tr>
+            <td onclick="mostrarMensagem('Célula 2.1')">Célula 2.1</td>
+            <td onclick="mostrarMensagem('Célula 2.2')">Célula 2.2</td>
+            <td onclick="mostrarMensagem('Célula 2.3')">Célula 2.3</td>
+        </tr>
+        <tr>
+            <td onclick="mostrarMensagem('Célula 3.1')">Célula 3.1</td>
+            <td onclick="mostrarMensagem('Célula 3.2')">Célula 3.2</td>
+            <td onclick="mostrarMensagem('Célula 3.3')">Célula 3.3</td>
+        </tr>
+    </tbody>
+</table>
+
+<script>
+    function mostrarMensagem(mensagem) {
+        alert(mensagem);
+    }
+</script>
+
+</body>
+</html>

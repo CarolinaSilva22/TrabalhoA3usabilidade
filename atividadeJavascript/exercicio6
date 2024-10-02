@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Esfera</title>
+</head>
+<body>
+     <label for="raio">Valor do raio:</label>
+    <input type="number" id="raio"><br><br>
+
+    <button onclick="calcular()">Calcular</button>
+
+    <h2>Resultado:</h2>
+    <p id="resultado">Comprimento: <span id="comprimento"></span></p>
+    <p id="resultadoArea">Área: <span id="area"></span></p>
+    <p id="resultadoVolume">Volume: <span id="volume"></span></p>
+
+    <script>
+        function calcular() {
+            let raio = parseFloat(document.getElementById("raio").value);
+
+            if (isNaN(raio)) {
+                alert("Valor incorreto");
+                return;
+            }
+
+            let comprimento = 2 * Math.PI * raio;
+            let area = Math.PI * Math.pow(raio, 2);
+            let volume = (4/3) * Math.PI * Math.pow(raio, 3);
+
+            document.getElementById("comprimento").innerText = comprimento.toFixed(2) + " unidades";
+            document.getElementById("area").innerText = area.toFixed(2) + " unidades²";
+            document.getElementById("volume").innerText = volume.toFixed(2) + " unidades³";
+        }
+    </script>
+</body>
+</html>

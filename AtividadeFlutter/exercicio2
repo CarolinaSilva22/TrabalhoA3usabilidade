@@ -1,0 +1,43 @@
+class Produto {
+  String nome;
+  double preco;
+  String descricao;
+
+  Produto({
+    required this.nome,
+    required this.preco,
+    required this.descricao,
+  });
+
+  @override
+  String toString() {
+    return 'Produto(nome: $nome, $preco, descrição: $descricao)';
+  }
+}
+
+List<Produto> getListaDeProdutos() {
+  return [
+    Produto(
+      nome: 'Teclado mecânico',
+      preco: 199.99,
+      descricao: 'Teclado mecânico com switch blue.',
+    ),
+    Produto(
+      nome: 'Mouse gamer',
+      preco: 120.00,
+      descricao: 'Mouse "gamer" RGB.',
+    ),
+    Produto(
+      nome: 'Monitor',
+      preco: 549.99,
+      descricao: 'Monitor Gamer 21.5 POL, VA, FHD, 100HZ, 1MS.',
+    ),
+  ];
+}
+
+void main() {
+  List<Produto> produtos = getListaDeProdutos();
+  for (var produto in produtos) {
+    print(produto); 
+  }
+}

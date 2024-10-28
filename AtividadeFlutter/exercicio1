@@ -1,0 +1,32 @@
+import 'package:flutter/material.dart';
+
+class Cliente {
+  String nome;
+  String email;
+  String telefone;
+
+  Cliente(this.nome, this.email, this.telefone);
+
+  String obterInformacao() {
+    return 'Nome: $nome\nEmail: $email\nTelefone: $telefone';
+  }
+}
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    Cliente cliente = Cliente('Laiane Nayara', 'laiane.nayara@gmail.com', '9999-9999');
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(title: Text('Dados do Cliente')),
+        body: Center(
+          child: Text(cliente.obterInformacao()),
+        ),
+      ),
+    );
+  }
+}

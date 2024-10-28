@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filmes em Exibição</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="container-fluid bg-dark text-white py-5 text-center">
+        <h1 class="display-4">Bem-vindo ao Cinema</h1>
+        <p class="lead">Confira nossos filmes em cartaz e escolha o melhor para seu entretenimento!</p>
+    </div>
+    <div class="container mt-5">
+        <h2 class="text-center mb-5">Filmes em Exibição</h2>
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <img src="Filme1.jpg" class="card-img-top" alt="Filme 1" onclick="goToDetails('filme1')">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Jogos Vorazes: a esperança (o final)</h5>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <img src="Filme2.jpg" class="card-img-top" alt="Filme 2" onclick="goToDetails('filme2')">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Furiosa, uma saga não max</h5>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <img src="Filme3.jpg" class="card-img-top" alt="Filme 3" onclick="goToDetails('filme3')">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Duna</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function goToDetails(filmeId) {
+
+            window.location.href = `detalhes.html?filme=${filmeId}`;
+        }
+    </script>
+</body>
+
+</html>

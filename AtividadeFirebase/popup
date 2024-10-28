@@ -1,0 +1,131 @@
+
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.0/firebase-app.js";
+import { getFirestore, addDoc, collection, getDocs, deleteDoc, doc, getDoc, updateDoc } from "https://www.gstatic.com/firebasejs/10.14.0/firebase-firestore.js";
+
+
+const firebaseConfig = {
+    apiKey: "AIzaSyAXONaVQK16ykCcRK0kY-IOtNpyf2zb6fk",
+    authDomain: "atividadediego-76494.firebaseapp.com",
+    projectId: "atividadediego-76494",
+    storageBucket: "atividadediego-76494.appspot.com",
+    messagingSenderId: "606778917745",
+    appId: "1:606778917745:web:8199cf2032339b2638ecd0",
+    measurementId: "G-5C2Z43W1G1"
+};
+
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+const notify = document.querySelector('.notify');
+const addBtn = document.querySelector('#add_Data');
+const updateDataBtn = document.querySelector('#update_data');
+
+async function addData() {
+    const name = document.querySelector('#name').value;
+    const email = document.querySelector('#email').value;
+    const id = document.querySelector('#ID').value;
+
+    try {
+        const docRef = await addDoc(collection(db, "users"), { name: name, email: email, id: id });
+        notify.innerHTML = `Data Added `;
+        document.querySelector('#name').value = "";
+        document.querySelector('#email').value = "";
+        document.querySelector('#ID').value = "";
+        setTimeout(() => {
+            notify.innerHTML = "";
+        }, 3000);
+        
+        GetData();
+    } catch (error) {
+        console.log(error);
+    }
+}
+addBtn.addEventListener('click', addData);
+
+async function GetData() {
+    try {
+        const querySnapshot = await getDocs(collection(db, "users"));
+        let html = "";
+        querySnapshot.forEach((doc) => {
+            const data = doc.data();
+            html += `
+                <tr>
+                    <td>${doc.id}</td>
+                    <td>${data.name}</td>
+                    <td>${data.email}</td>
+                    <td><button class="del_btn" onclick="deleteData('${doc.id}')">Excluir</button></td>
+                    <td><button class="up_btn" onclick="showUpdateForm('${doc.id}')">Atualizar</button></td>
+                </tr>
+            `;
+        });
+        document.querySelector('table tbody').innerHTML = html; 
+    } catch (err) {
+        console.log(err);
+    }
+}
+
+
+GetData();
+
+window.deleteData = async function (id) {
+    if (confirm("Tem certeza que deseja excluir este item?")) {
+        try {
+            await deleteDoc(doc(db, "users", id));
+            notify.innerHTML = "Data Deleted";
+            setTimeout(() => {
+                notify.innerHTML = "";
+            }, 3000);
+       
+            GetData();
+        } catch (err) {
+            console.log(err);
+        }
+    }
+};
+
+window.showUpdateForm = async function (id) {
+    try {
+        const docSnapShot = await getDoc(doc(db, "users", id));
+        const currentUser = docSnapShot.data();
+        document.querySelector('#name').value = currentUser.name;
+        document.querySelector('#email').value = currentUser.email;
+        document.querySelector('#ID').value = currentUser.id;
+
+        updateDataBtn.classList.add('show');
+        addBtn.classList.add('hide');
+
+        updateDataBtn.onclick = function () {
+            if (confirm("Tem certeza que deseja atualizar este item?")) {
+                updateData(id);
+            }
+        }
+    } catch (err) {
+        console.log(err);
+    }
+};
+
+async function updateData(id) {
+    const newName = document.querySelector('#name').value;
+    const newEmail = document.querySelector('#email').value;
+    const newId = document.querySelector('#ID').value;
+
+    if (newName && newEmail) {
+        try {
+            await updateDoc(doc(db, "users", id), { name: newName, email: newEmail });
+            notify.innerHTML = "Data Updated";
+            GetData();
+            updateDataBtn.classList.remove('show');
+            addBtn.classList.remove('hide');
+            document.querySelector('#name').value = "";
+            document.querySelector('#email').value = "";
+            document.querySelector('#ID').value = "";
+            setTimeout(() => {
+                notify.innerHTML = "";
+            }, 3000);
+        } catch (err) {
+            console.log(err);
+        }
+    }
+}
+

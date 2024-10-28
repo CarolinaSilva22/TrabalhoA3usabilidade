@@ -1,0 +1,41 @@
+
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        backgroundColor: Colors.blue[900],
+        appBar: AppBar(
+          leading: const Icon(Icons.menu),
+          title: Text('Perfil do Usuário'),
+          backgroundColor: Colors.blue,
+        ),
+        body: Center(
+          child: Text(
+            'Laura Vete',
+            style: TextStyle(
+              fontSize: 24,
+              fontWeight: FontWeight.bold,
+              color: Colors.yellow,
+            ),
+            textAlign: TextAlign.center,
+          ),
+        ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+          },
+          child: Icon(Icons.edit), 
+          tooltip: 'Editar Perfil',
+          backgroundColor: Colors.blue,
+        ),
+        floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
+      ),
+    );
+  }
+}

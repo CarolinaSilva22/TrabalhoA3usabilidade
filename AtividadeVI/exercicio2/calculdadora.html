@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Completa</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            margin: 0;
+        }
+
+        .calculadora {
+            width: 260px;
+            padding: 20px;
+            border: 2px solid #333;
+            border-radius: 20px;
+            background-color: #fff;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .tela {
+            width: 100%;
+            height: 50px;
+            background-color: #333;
+            color: white;
+            text-align: right;
+            padding: 10px;
+            font-size: 24px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            overflow-x: auto;
+        }
+
+        .botoes {
+            width: 100%;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-gap: 10px;
+        }
+
+        .botao {
+            width: 100%;
+            height: 60px;
+            margin: 0;
+            font-size: 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .botao:hover {
+            background-color: #45a049;
+        }
+
+        .botao-operacao {
+            background-color: #f39c12;
+        }
+
+        .botao-operacao:hover {
+            background-color: #e67e22;
+        }
+
+        .botao-igual {
+            background-color: #3498db;
+        }
+
+        .botao-igual:hover {
+            background-color: #2980b9;
+        }
+
+        .botao-clear {
+            background-color: #e74c3c;
+        }
+
+        .botao-clear:hover {
+            background-color: #c0392b;
+        }
+
+        .botao-zero {
+            grid-column: span 2;
+        }
+    </style>
+</head>
+<body>
+
+<div class="calculadora">
+    <div class="tela" id="tela">0</div>
+    <div class="botoes">
+        <button class="botao botao-clear" onclick="limparTela()">C</button>
+        <button class="botao" onclick="apagarUltimo()">←</button>
+        <button class="botao botao-operacao" onclick="adicionarOperacao('%')">%</button>
+        <button class="botao botao-operacao" onclick="adicionarOperacao('/')">/</button>
+
+        <button class="botao" onclick="adicionarNumero(7)">7</button>
+        <button class="botao" onclick="adicionarNumero(8)">8</button>
+        <button class="botao" onclick="adicionarNumero(9)">9</button>
+        <button class="botao botao-operacao" onclick="adicionarOperacao('*')">x</button>
+
+        <button class="botao" onclick="adicionarNumero(4)">4</button>
+        <button class="botao" onclick="adicionarNumero(5)">5</button>
+        <button class="botao" onclick="adicionarNumero(6)">6</button>
+        <button class="botao botao-operacao" onclick="adicionarOperacao('-')">-</button>
+
+        <button class="botao" onclick="adicionarNumero(1)">1</button>
+        <button class="botao" onclick="adicionarNumero(2)">2</button>
+        <button class="botao" onclick="adicionarNumero(3)">3</button>
+        <button class="botao botao-operacao" onclick="adicionarOperacao('+')">+</button>
+
+        <button class="botao botao-zero" onclick="adicionarNumero(0)">0</button>
+        <button class="botao" onclick="adicionarNumero('.')">.</button>
+        <button class="botao botao-igual" onclick="calcularResultado()">=</button>
+    </div>
+</div>
+
+<script>
+    let tela = document.getElementById("tela");
+    let operacaoAtual = "";
+    let operacaoAnterior = "";
+    let operador = null;
+
+    function adicionarNumero(numero) {
+        if (tela.innerHTML === "0" || operacaoAtual === "0") {
+            operacaoAtual = numero.toString();
+        } else {
+            operacaoAtual += numero;
+        }
+        atualizarTela();
+    }
+
+    function adicionarOperacao(op) {
+        if (operacaoAtual === "") return;
+        if (operacaoAnterior !== "") {
+            calcularResultado();
+        }
+        operador = op;
+        operacaoAnterior = operacaoAtual;
+        operacaoAtual = "";
+    }
+
+    function calcularResultado() {
+        let resultado;
+        const anterior = parseFloat(operacaoAnterior);
+        const atual = parseFloat(operacaoAtual);
+
+        if (isNaN(anterior) || isNaN(atual)) return;
+
+        switch (operador) {
+            case "+":
+                resultado = anterior + atual;
+                break;
+            case "-":
+                resultado = anterior - atual;
+                break;
+            case "*":
+                resultado = anterior * atual;
+                break;
+            case "/":
+                resultado = anterior / atual;
+                break;
+            case "%":
+                resultado = anterior % atual;
+                break;
+            default:
+                return;
+        }
+        operacaoAtual = resultado;
+        operador = null;
+        operacaoAnterior = "";
+        atualizarTela();
+    }
+
+    function atualizarTela() {
+        tela.innerHTML = operacaoAtual;
+    }
+
+    function limparTela() {
+        operacaoAtual = "0";
+        operacaoAnterior = "";
+        operador = null;
+        atualizarTela();
+    }
+
+    function apagarUltimo() {
+        operacaoAtual = operacaoAtual.slice(0, -1);
+        if (operacaoAtual === "") {
+            operacaoAtual = "0";
+        }
+        atualizarTela();
+    }
+</script>
+
+</body>
+</html>
+

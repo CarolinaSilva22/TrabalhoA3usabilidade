@@ -1,0 +1,119 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes do Filme</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+    <div class="container-fluid bg-dark text-white py-5 text-center">
+        <h1 id="filme-title" class="display-4">Detalhes do Filme</h1>
+        <p class="lead">Saiba mais sobre o filme escolhido e confira os horários de exibição.</p>
+    </div>
+
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-4 text-center">
+                <img src="Filme3.jpg" id="filme-poster" alt="Poster do Filme" class="img-fluid rounded shadow">
+            </div>
+            <div class="col-md-8">
+                <h2 id="filme-titulo" class="mb-4"></h2>
+                <p id="filme-descricao" class="text-muted">Uma breve descrição</p>
+                
+                
+                <div class="mb-3">
+                    <h5 class="d-inline text-primary">Preço:</h5>
+                    <span id="filme-preco" class="ml-2 text-dark font-weight-bold"></span>
+                </div>
+
+                <div class="mb-3">
+                    <h5 class="text-primary">Horários:</h5>
+                    <ul id="filme-horarios" class="list-inline">
+        
+                    </ul>
+                </div>
+                <div class="mb-3">
+                    <h5 class="d-inline text-primary">Sala:</h5>
+                    <span id="filme-sala" class="ml-2 text-dark font-weight-bold"></span>
+                </div>
+                <div class="mb-3">
+                    <h5 class="d-inline text-primary">Tipo de Exibição:</h5>
+                    <span id="filme-tipo" class="ml-2 text-dark font-weight-bold"></span>
+                </div>
+                <a href="home.html" class="btn btn-secondary mt-4">Voltar</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function getFilmeDetails(filmeId) {
+            const filmes = {
+                "filme1": {
+                    "titulo": "Filme 1",
+                    "descricao": "Um filme emocionante que explora a profundidade da aventura.",
+                    "preco": "R$ 20,00",
+                    "horarios": ["14:00", "16:30", "19:00"],
+                    "salas": "Sala 1",
+                    "tipo": "3D",
+                    "poster": "Filme1.jpg"
+                },
+                "filme2": {
+                    "titulo": "Filme 2",
+                    "descricao": "Ação intensa com efeitos visuais deslumbrantes.",
+                    "preco": "R$ 15,00",
+                    "horarios": ["13:00", "15:30", "18:00"],
+                    "salas": "Sala 2",
+                    "tipo": "2D",
+                    "poster": "Filme2.jpg"
+                },
+                "filme3": {
+                    "titulo": "Filme 3",
+                    "descricao": "Ação intensa com efeitos visuais deslumbrantes.",
+                    "preco": "R$ 18,00",
+                    "horarios": ["12:30", "16:00", "20:00"],
+                    "salas": "Sala 3",
+                    "tipo": "3D",
+                    "poster": "Filmes3.jpg"
+                }
+            };
+
+            return filmes[filmeId];
+        }
+
+        function displayFilmeDetails() {
+            const params = new URLSearchParams(window.location.search);
+            const filmeId = params.get("filme");
+            const filmeDetails = getFilmeDetails(filmeId);
+
+            if (filmeDetails) {
+                document.getElementById("filme-title").innerText = filmeDetails.titulo;
+                document.getElementById("filme-titulo").innerText = filmeDetails.titulo;
+                document.getElementById("filme-descricao").innerText = filmeDetails.descricao;
+                document.getElementById("filme-preco").innerText = filmeDetails.preco;
+                document.getElementById("filme-sala").innerText = filmeDetails.salas;
+                document.getElementById("filme-tipo").innerText = filmeDetails.tipo;
+                document.getElementById("filme-poster").src = filmeDetails.poster;
+
+                const horariosContainer = document.getElementById("filme-horarios");
+                horariosContainer.innerHTML = "";
+                filmeDetails.horarios.forEach(horario => {
+                    const horarioItem = document.createElement("li");
+                    horarioItem.classList.add("list-inline-item", "badge", "badge-primary", "p-2", "mr-2");
+                    horarioItem.innerText = horario;
+                    horariosContainer.appendChild(horarioItem);
+                });
+            } else {
+                document.getElementById("filme-titulo").innerText = "Filme não encontrado.";
+                document.getElementById("filme-descricao").innerText = "";
+            }
+        }
+
+        displayFilmeDetails();
+    </script>
+
+</body>
+</html>

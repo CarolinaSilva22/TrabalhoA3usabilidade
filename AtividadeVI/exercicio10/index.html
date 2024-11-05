@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Função Definida por Partes</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            text-align: center;
+        }
+        input, button {
+            margin: 5px;
+        }
+        #resultado {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Cálculo da Função Definida por Partes</h1>
+
+<p>Digite um valor para x:</p>
+<input type="number" id="valorX" placeholder="Valor de x">
+<button onclick="calcularFuncao()">Calcular f(x)</button>
+
+<div id="resultado"></div>
+
+<script>
+    function calcularFuncao() {
+        const x = parseFloat(document.getElementById("valorX").value);
+        let resultado;
+
+        if (x < -2) {
+            resultado = 2 * x + 2;
+        } else if (x >= -2 && x < 3) {
+            resultado = 3;
+        } else { // x >= 3
+            resultado = -x;
+        }
+
+        document.getElementById("resultado").innerHTML = "f(" + x + ") = " + resultado;
+    }
+</script>
+
+</body>
+</html>
+
